@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Htag, Ptag, Rating, Tag} from '../components';
+import {Button, Htag, Input, Ptag, Rating, Tag, Textarea} from '../components';
 import {withLayout} from "../layout/Layout";
 import {GetStaticProps} from "next";
 import axios from "axios";
@@ -18,10 +18,8 @@ function Home({menu}: HomeProps): JSX.Element {
         <Tag size='m' color='green'>Medium</Tag>
         <Tag color='primary'>Small</Tag>
         <Rating rating={rat} isEditable={true} setRating={setRat}/>
-        <ul>
-            {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
-        </ul>
-
+        <Input placeholder='Привет' />
+        <Textarea placeholder='Привет' />
     </>
     );
 }
