@@ -88,6 +88,10 @@
     margin-bottom: 15px;
 }
 
+.rateTitle a {
+    color: var(--primary);
+}
+
 .readMore {
     margin-left: 20px;
 }
