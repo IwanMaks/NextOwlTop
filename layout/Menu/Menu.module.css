@@ -40,17 +40,17 @@
     border-left: 1px solid #DFDFDF;
 }
 
-.secondLevelBlockOpened:last-child {
-    margin-bottom: 20px;
-}
+/*.secondLevelBlockOpened:last-child {*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
 .secondLevelBlock {
-    display: none;
+    overflow: hidden;
 }
 
-.secondLevelBlockOpened {
-    display: block;
-}
+/*.secondLevelBlockOpened {*/
+/*    display: block;*/
+/*}*/
 
 .thirdLevel {
     margin-bottom: 10px;
