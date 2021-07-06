@@ -74,6 +74,12 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
                     tabIndex={computeFocus(rating, i)}
                     onKeyDown={handleKey}
                     ref={r => rateArrRef.current?.push(r)}
+                    role={isEditable ? 'slider' : ''}
+                    aria-invalid={!!error}
+                    aria-valuenow={rating}
+                    aria-valuemax={5}
+                    aria-label={isEditable ? 'Укажите рейтинг стрелками вверх и вниз' : 'Рейтинг ' + rating}
+                    aria-valuemin={1}
                 >
                     <svg
                         width="20"
@@ -96,7 +102,7 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
             [styles.error]: error
         })}>
             {ratingArr.map((r, i) => (<span key={i}>{r}</span>))}
-            {error && <span className={styles.message}>{error.message}</span>}
+            {error && <span role='alert' className={styles.message}>{error.message}</span>}
         </div>
     )
 })

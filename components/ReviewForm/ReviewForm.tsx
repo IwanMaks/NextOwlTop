@@ -12,7 +12,7 @@ import {API} from "../../helpers/api";
 import {useState} from "react";
 
 export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFormProps): JSX.Element => {
-    const { register, control, handleSubmit, formState: {errors}, reset } = useForm<IReviewForm>()
+    const { register, control, handleSubmit, formState: {errors}, reset, clearErrors } = useForm<IReviewForm>()
     const [isSuccess, setIsSuccess] = useState<boolean>(false)
     const [error, setIsError] = useState<string>()
 
@@ -44,6 +44,7 @@ export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFor
                             message: 'Заполните Имя'
                         }})
                     }
+                    aria-invalid={!!errors.name}
                 />
                 <Input
                     {...register(
@@ -56,6 +57,7 @@ export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFor
                     error={errors.title}
                     tabIndex={isOpened ? 0 : -1}
                     className={styles.title}
+                    aria-invalid={!!errors.title}
                     placeholder='Заголовок отзыва'
                 />
                 <div className={styles.rating}>
@@ -90,29 +92,43 @@ export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFor
                     error={errors.description}
                     className={styles.desc}
                     tabIndex={isOpened ? 0 : -1}
+                    aria-invalid={!!errors.description}
+                    aria-label='Текст отзыва'
                     placeholder='Текст Отзыва'/>
                 <div className={styles.submit}>
-                    <Button appearance='primary' tabIndex={isOpened ? 0 : -1}>Отправить</Button>
+                    <Button onClick={() => clearErrors()} appearance='primary' tabIndex={isOpened ? 0 : -1}>Отправить</Button>
                     <span className={styles.info}>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
                 </div>
             </div>
-            {isSuccess && <div className={cn(styles.success, styles.panel)}>
+            {isSuccess && <div className={cn(styles.success, styles.panel)} role='alert'>
                 <div className={styles.successTitle}>Ваш отзыв отправлен</div>
                 <div>
                     Спасибо, ваш отзыв будет опубликован после проверки.
                 </div>
-                <svg onClick={() => setIsSuccess(false)} className={styles.close} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="2.06066" y1="1.93934" x2="10.5459" y2="10.4246" stroke="#1CC37E" strokeWidth="3"/>
-                    <line x1="1.93934" y1="10.4246" x2="10.4246" y2="1.93935" stroke="#1CC37E" strokeWidth="3"/>
-                </svg>
+                <button
+                    onClick={() => setIsSuccess(false)}
+                    className={styles.close}
+                    aria-label='Закрыть оповещение'
+                >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="2.06066" y1="1.93934" x2="10.5459" y2="10.4246" stroke="#1CC37E" strokeWidth="3"/>
+                        <line x1="1.93934" y1="10.4246" x2="10.4246" y2="1.93935" stroke="#1CC37E" strokeWidth="3"/>
+                    </svg>
+                </button>
             </div>}
 
-            {error && <div className={cn(styles.error, styles.panel)}>
+            {error && <div className={cn(styles.error, styles.panel)} role='alert'>
                 Что-то пошло не так, попробуйте обновить страницу
-                <svg onClick={() => setIsError(undefined)} className={styles.close} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="2.06066" y1="1.93934" x2="10.5459" y2="10.4246" stroke="#1CC37E" strokeWidth="3"/>
-                    <line x1="1.93934" y1="10.4246" x2="10.4246" y2="1.93935" stroke="#1CC37E" strokeWidth="3"/>
-                </svg>
+                <button
+                    aria-label='Закрыть оповещение'
+                    onClick={() => setIsError(undefined)}
+                    className={styles.close}
+                >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="2.06066" y1="1.93934" x2="10.5459" y2="10.4246" stroke="#1CC37E" strokeWidth="3"/>
+                        <line x1="1.93934" y1="10.4246" x2="10.4246" y2="1.93935" stroke="#1CC37E" strokeWidth="3"/>
+                    </svg>
+                </button>
             </div>}
         </form>
     )
