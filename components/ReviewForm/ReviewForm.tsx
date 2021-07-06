@@ -10,6 +10,7 @@ import {IReviewForm, IReviewSendResponse} from "./ReviewForm.interfece";
 import axios from "axios";
 import {API} from "../../helpers/api";
 import {useState} from "react";
+import CloseIcon from '../../public/close.svg'
 
 export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFormProps): JSX.Element => {
     const { register, control, handleSubmit, formState: {errors}, reset, clearErrors } = useForm<IReviewForm>()
@@ -110,10 +111,7 @@ export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFor
                     className={styles.close}
                     aria-label='Закрыть оповещение'
                 >
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="2.06066" y1="1.93934" x2="10.5459" y2="10.4246" stroke="#1CC37E" strokeWidth="3"/>
-                        <line x1="1.93934" y1="10.4246" x2="10.4246" y2="1.93935" stroke="#1CC37E" strokeWidth="3"/>
-                    </svg>
+                    <CloseIcon />
                 </button>
             </div>}
 
@@ -124,10 +122,7 @@ export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFor
                     onClick={() => setIsError(undefined)}
                     className={styles.close}
                 >
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="2.06066" y1="1.93934" x2="10.5459" y2="10.4246" stroke="#1CC37E" strokeWidth="3"/>
-                        <line x1="1.93934" y1="10.4246" x2="10.4246" y2="1.93935" stroke="#1CC37E" strokeWidth="3"/>
-                    </svg>
+                    <CloseIcon />
                 </button>
             </div>}
         </form>
