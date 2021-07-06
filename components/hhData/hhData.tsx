@@ -1,6 +1,5 @@
 import styles from './hhData.module.css'
 import {HhDataProps} from "./hhData.props";
-import cn from "classnames";
 import {Card} from "../Card/Card";
 import {priceRu} from "../../helpers/helpers";
 

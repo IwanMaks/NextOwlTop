@@ -6,7 +6,7 @@ import cn from "classnames";
 import Link from 'next/link'
 import {useRouter} from "next/router";
 import { firstLevelMenu } from "../../helpers/helpers";
-import {motion, useReducedMotion} from 'framer-motion'
+import {motion} from 'framer-motion'
 import {KeyboardEvent} from "react";
 
 
@@ -14,7 +14,7 @@ export const Menu = (): JSX.Element => {
     const [ann, setAnn] = useState<'closed' | 'opened' | undefined>()
     const {menu, setMenu, firstCategory} = useContext(AppContext)
     const router = useRouter()
-    const shouldReducedMotion = useReducedMotion()
+    // const shouldReducedMotion = useReducedMotion()
     const variants = {
         visible: {
             marginBottom: 20,

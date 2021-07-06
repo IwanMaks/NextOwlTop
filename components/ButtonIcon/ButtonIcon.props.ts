@@ -1,7 +1,7 @@
 import {ButtonHTMLAttributes, DetailedHTMLProps} from "react";
-import {UpIcon} from "../UpIcon/UpIcon";
-import {CloseIcon} from "../CloseIcon/CloseIcon";
-import {BurgerIcon} from "../BurgerIcon/BurgerIcon";
+import {UpIcon} from "../Icons/UpIcon/UpIcon";
+import {CloseIcon} from "../Icons/CloseIcon/CloseIcon";
+import {BurgerIcon} from "../Icons/BurgerIcon/BurgerIcon";
 
 export const icons = {
     UpIcon,

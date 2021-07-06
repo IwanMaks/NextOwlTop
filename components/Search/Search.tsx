@@ -16,7 +16,7 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
             query: {
                 q: search
             }
-        })
+        });
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
