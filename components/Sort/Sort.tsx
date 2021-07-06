@@ -5,7 +5,7 @@ import cn from "classnames";
 export const Sort = ({sort, setSort, className, ...props}: SortProps): JSX.Element => {
     return (
         <div className={cn(styles.sort, className)} {...props}>
-            <span
+            <button
                 onClick={() => setSort(SortEnum.Rating)}
                 className={cn({
                     [styles.active]: sort === SortEnum.Rating
@@ -17,7 +17,7 @@ export const Sort = ({sort, setSort, className, ...props}: SortProps): JSX.Eleme
                     <rect y="10" width="8" height="3" rx="1.5" fill="#7653FC"/>
                 </svg>
                 По рейтингу
-            </span>
+            </button>
 
             <span
                 onClick={() => setSort(SortEnum.Price)}
